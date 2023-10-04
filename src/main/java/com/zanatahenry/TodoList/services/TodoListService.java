@@ -1,7 +1,7 @@
-package com.zanatahenry.TodoList.service;
+package com.zanatahenry.TodoList.services;
 
-import com.zanatahenry.TodoList.dtos.TodoListDTO;
-import com.zanatahenry.TodoList.entity.TodoList;
+import com.zanatahenry.TodoList.DTOs.TodoListDTO;
+import com.zanatahenry.TodoList.entities.TodoList;
 
 import java.util.List;
 import java.util.Optional;
@@ -16,4 +16,7 @@ public interface TodoListService {
   Optional<TodoList> updateTodo(Integer id, TodoListDTO dto);
 
   void delete(Integer id);
+
+  boolean exists(Integer id);
+
 }
