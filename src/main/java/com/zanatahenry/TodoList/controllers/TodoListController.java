@@ -1,12 +1,13 @@
 package com.zanatahenry.TodoList.controllers;
 
-import com.zanatahenry.TodoList.controllers.response.ResponseHandler;
+import com.zanatahenry.TodoList.models.ResponseHandler;
 import com.zanatahenry.TodoList.DTOs.TodoListDTO;
 import com.zanatahenry.TodoList.entities.TodoList;
 import com.zanatahenry.TodoList.exception.ErrorException;
 import com.zanatahenry.TodoList.services.TodoListService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

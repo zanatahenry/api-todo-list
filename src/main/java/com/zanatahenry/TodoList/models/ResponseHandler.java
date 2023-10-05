@@ -1,4 +1,4 @@
-package com.zanatahenry.TodoList.controllers.response;
+package com.zanatahenry.TodoList.models;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
