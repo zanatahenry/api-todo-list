@@ -4,7 +4,6 @@ import com.zanatahenry.TodoList.entities.UserEntity;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.io.Encoders;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -19,10 +18,8 @@ public class JwtService {
   @Value("${security.jwt.TOKEN-EXPIRATION-HOURS}")
   private String expirationTime;
 
+  private final static SecretKey secretKey = Jwts.SIG.HS256.key().build();
 
-  private String privateKey = "d/HZBgGxRplJYoXMdHft0w==";
-
-  private SecretKey key = Jwts.SIG.HS256.key().build();
   public String getToken (UserEntity user) {
     long expString = Long.valueOf(this.expirationTime);
     LocalDateTime expiresIn = LocalDateTime.now().plusHours(expString);
@@ -33,14 +30,14 @@ public class JwtService {
         .builder()
         .subject(user.getEmail())
         .expiration(date)
-        .signWith(key)
+        .signWith(secretKey)
         .compact();
   }
 
   private Claims getClaims (String token) throws ExpiredJwtException {
     return Jwts
         .parser()
-        .verifyWith(this.key)
+        .verifyWith(secretKey)
         .build()
         .parseSignedClaims(token)
         .getPayload();

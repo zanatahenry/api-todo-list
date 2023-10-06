@@ -42,7 +42,7 @@ public class UserServiceImpl implements UserService {
   public UserDetails authenticate(SigninDTO dto) {
     UserDetails userDetails = this.loadUserByEmail(dto.getEmail());
     boolean validPassword = bCryptPasswordEncoder.matches(dto.getPassword(), userDetails.getPassword());
-    if (!validPassword) throw new ErrorException("Senha/email inválidos!", HttpStatus.BAD_REQUEST);
+    if (!validPassword) throw new ErrorException("Senha/E-mail inválidos!", HttpStatus.BAD_REQUEST);
     return userDetails;
   }
 

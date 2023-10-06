@@ -1,11 +1,13 @@
 package com.zanatahenry.TodoList.controllers;
 
-import org.springframework.stereotype.Controller;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+@RestController
 @RequestMapping("/management")
+@Tag(name = "Management", description = "Management API")
 public class ManagementController {
   @GetMapping("/alou")
   public String alou () {

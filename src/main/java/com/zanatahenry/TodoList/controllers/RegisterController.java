@@ -4,6 +4,7 @@ import com.zanatahenry.TodoList.DTOs.UserDTO;
 import com.zanatahenry.TodoList.entities.UserEntity;
 import com.zanatahenry.TodoList.models.ResponseHandler;
 import com.zanatahenry.TodoList.services.UserService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/register")
+@Tag(name = "Register", description = "Register API")
 public class RegisterController {
   private final UserService service;
 

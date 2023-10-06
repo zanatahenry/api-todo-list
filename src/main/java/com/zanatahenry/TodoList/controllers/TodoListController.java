@@ -1,13 +1,13 @@
 package com.zanatahenry.TodoList.controllers;
 
-import com.zanatahenry.TodoList.models.ResponseHandler;
 import com.zanatahenry.TodoList.DTOs.TodoListDTO;
 import com.zanatahenry.TodoList.entities.TodoList;
 import com.zanatahenry.TodoList.exception.ErrorException;
+import com.zanatahenry.TodoList.models.ResponseHandler;
 import com.zanatahenry.TodoList.services.TodoListService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,6 +18,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/todo")
+@Tag(name = "Todo", description = "Todo API")
 public class TodoListController {
   private final TodoListService service;
 

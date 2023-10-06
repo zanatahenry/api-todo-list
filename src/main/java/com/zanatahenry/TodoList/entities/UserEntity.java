@@ -2,6 +2,7 @@ package com.zanatahenry.TodoList.entities;
 
 import com.zanatahenry.TodoList.enums.UserRoles;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -20,7 +21,9 @@ public class UserEntity {
   @GeneratedValue(strategy = GenerationType.AUTO)
   private Long id;
 
+  @Email
   private String email;
+
   private String password;
   private String name;
 

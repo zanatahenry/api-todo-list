@@ -6,11 +6,11 @@ import com.zanatahenry.TodoList.entities.UserEntity;
 import com.zanatahenry.TodoList.models.ResponseHandler;
 import com.zanatahenry.TodoList.security.jwt.JwtService;
 import com.zanatahenry.TodoList.services.UserService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/signin")
+@Tag(name = "Signin", description = "Signin API")
 public class SigninController {
   private final UserService userService;
   private final JwtService jwtService;
