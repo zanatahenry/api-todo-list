@@ -25,6 +25,10 @@ public class UserServiceImpl implements UserService {
 
   private final UserRepository repository;
 
+  public boolean userExists (String email) {
+    return repository.existsByEmail(email);
+  }
+
   @Override
   public UserEntity createUser(UserDTO dto) {
     UserEntity newUser = new UserEntity();

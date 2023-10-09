@@ -2,6 +2,7 @@ package com.zanatahenry.TodoList.controllers;
 
 import com.zanatahenry.TodoList.DTOs.UserDTO;
 import com.zanatahenry.TodoList.entities.UserEntity;
+import com.zanatahenry.TodoList.exception.ErrorException;
 import com.zanatahenry.TodoList.models.ResponseHandler;
 import com.zanatahenry.TodoList.services.UserService;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -23,6 +24,9 @@ public class RegisterController {
 
   @PostMapping
   public ResponseEntity<Object> register (@RequestBody @Valid UserDTO dto) {
+    boolean emailExists = service.userExists(dto.getEmail());
+    if (emailExists) throw new ErrorException("Email já utilizado no sistema", HttpStatus.BAD_REQUEST);
+
     UserEntity createdUser = service.createUser(dto);
 
     return ResponseHandler.generateResponse("Usuário criado com sucesso!", HttpStatus.CREATED, createdUser.getId());

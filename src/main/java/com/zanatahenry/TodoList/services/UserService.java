@@ -9,4 +9,6 @@ public interface UserService {
   UserEntity createUser (UserDTO dto);
 
   UserDetails authenticate(SigninDTO dto);
+
+  boolean userExists(String email);
 }

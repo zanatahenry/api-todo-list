@@ -58,9 +58,7 @@ public class TodoListServiceImpl implements TodoListService {
   @Override
   public void delete(Integer id) {
     Optional<TodoList> todo = repository.findById(id);
-    if (todo.isPresent()) {
-      repository.delete(todo.get());
-    }
+    todo.ifPresent(repository::delete);
   }
 
   @Override

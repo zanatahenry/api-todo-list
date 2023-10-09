@@ -3,6 +3,7 @@ package com.zanatahenry.TodoList.controllers;
 import com.zanatahenry.TodoList.DTOs.SigninDTO;
 import com.zanatahenry.TodoList.DTOs.SigninResponseDTO;
 import com.zanatahenry.TodoList.entities.UserEntity;
+import com.zanatahenry.TodoList.exception.ErrorException;
 import com.zanatahenry.TodoList.models.ResponseHandler;
 import com.zanatahenry.TodoList.security.jwt.JwtService;
 import com.zanatahenry.TodoList.services.UserService;
@@ -25,6 +26,9 @@ public class SigninController {
   private final JwtService jwtService;
   @PostMapping
   public ResponseEntity<Object> signin (@RequestBody @Valid SigninDTO dto) {
+    boolean userExists = userService.userExists(dto.getEmail());
+    if (!userExists) throw new ErrorException("Usuário não existe no sistema!", HttpStatus.BAD_REQUEST);
+
     userService.authenticate(dto);
     SigninResponseDTO responseDTO = new SigninResponseDTO();
     UserEntity user = UserEntity
